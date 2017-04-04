@@ -15,6 +15,7 @@
 		07A34B591E933FC3003BDB8A /* LoginGuildeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A34B581E933FC3003BDB8A /* LoginGuildeTests.swift */; };
 		07A34B641E933FC3003BDB8A /* LoginGuildeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A34B631E933FC3003BDB8A /* LoginGuildeUITests.swift */; };
 		07F88AE21E938EC40032BECE /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F88AE11E938EC40032BECE /* PageCell.swift */; };
+		07F88AE41E93A15C0032BECE /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F88AE31E93A15C0032BECE /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		07A34B631E933FC3003BDB8A /* LoginGuildeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGuildeUITests.swift; sourceTree = "<group>"; };
 		07A34B651E933FC3003BDB8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07F88AE11E938EC40032BECE /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		07F88AE31E93A15C0032BECE /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				07A34B431E933FC2003BDB8A /* AppDelegate.swift */,
 				07A34B451E933FC2003BDB8A /* ViewController.swift */,
 				07F88AE11E938EC40032BECE /* PageCell.swift */,
+				07F88AE31E93A15C0032BECE /* Page.swift */,
 				07A34B471E933FC3003BDB8A /* Main.storyboard */,
 				07A34B4A1E933FC3003BDB8A /* Assets.xcassets */,
 				07A34B4C1E933FC3003BDB8A /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 			files = (
 				07A34B461E933FC2003BDB8A /* ViewController.swift in Sources */,
 				07A34B441E933FC2003BDB8A /* AppDelegate.swift in Sources */,
+				07F88AE41E93A15C0032BECE /* Page.swift in Sources */,
 				07F88AE21E938EC40032BECE /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
