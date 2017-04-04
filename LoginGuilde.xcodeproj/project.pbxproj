@@ -14,6 +14,7 @@
 		07A34B4E1E933FC3003BDB8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A34B4C1E933FC3003BDB8A /* LaunchScreen.storyboard */; };
 		07A34B591E933FC3003BDB8A /* LoginGuildeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A34B581E933FC3003BDB8A /* LoginGuildeTests.swift */; };
 		07A34B641E933FC3003BDB8A /* LoginGuildeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A34B631E933FC3003BDB8A /* LoginGuildeUITests.swift */; };
+		07F88AE21E938EC40032BECE /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F88AE11E938EC40032BECE /* PageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		07A34B5F1E933FC3003BDB8A /* LoginGuildeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginGuildeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07A34B631E933FC3003BDB8A /* LoginGuildeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginGuildeUITests.swift; sourceTree = "<group>"; };
 		07A34B651E933FC3003BDB8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07F88AE11E938EC40032BECE /* PageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				07A34B431E933FC2003BDB8A /* AppDelegate.swift */,
 				07A34B451E933FC2003BDB8A /* ViewController.swift */,
+				07F88AE11E938EC40032BECE /* PageCell.swift */,
 				07A34B471E933FC3003BDB8A /* Main.storyboard */,
 				07A34B4A1E933FC3003BDB8A /* Assets.xcassets */,
 				07A34B4C1E933FC3003BDB8A /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				07A34B461E933FC2003BDB8A /* ViewController.swift in Sources */,
 				07A34B441E933FC2003BDB8A /* AppDelegate.swift in Sources */,
+				07F88AE21E938EC40032BECE /* PageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,6 +511,7 @@
 				07A34B6A1E933FC3003BDB8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07A34B6B1E933FC3003BDB8A /* Build configuration list for PBXNativeTarget "LoginGuildeTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +520,7 @@
 				07A34B6D1E933FC3003BDB8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07A34B6E1E933FC3003BDB8A /* Build configuration list for PBXNativeTarget "LoginGuildeUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +529,7 @@
 				07A34B701E933FC3003BDB8A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
