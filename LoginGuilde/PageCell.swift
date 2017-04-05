@@ -10,6 +10,42 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
+    var page: Page? {
+        
+        didSet {
+            
+            guard let page = page else {
+                return
+            }
+            
+            imageView.image = UIImage(named: page.imageName)
+            
+            let color = UIColor(white: 0.2, alpha: 1)
+            
+            let atributeTextTitle = NSMutableAttributedString(string: page.title, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 20, weight: UIFontWeightMedium), NSForegroundColorAttributeName: color])
+            
+            let attributeTextMessage = NSMutableAttributedString(string: "\n\n\(page.message)", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: color])
+            
+            let styleCenter = NSMutableParagraphStyle()
+            styleCenter.alignment = .center
+
+            let titleLength = page.title.characters.count
+            atributeTextTitle.addAttribute(NSParagraphStyleAttributeName, value: styleCenter, range: NSRange(location: 0, length: titleLength))
+            
+            let messageLength = page.message.characters.count
+            attributeTextMessage.addAttribute(NSParagraphStyleAttributeName, value: styleCenter, range: NSRange(location: 0, length: messageLength))
+            
+            let attributeText = NSMutableAttributedString()
+            attributeText.append(atributeTextTitle)
+            attributeText.append(attributeTextMessage)
+
+            
+            textView.attributedText =  attributeText
+            
+        }
+        
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()

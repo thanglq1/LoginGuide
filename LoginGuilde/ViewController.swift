@@ -32,10 +32,55 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         return cv
     }()
     
+    var pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPageIndicatorTintColor = UIColor.orange
+        pc.pageIndicatorTintColor = UIColor.gray
+        pc.translatesAutoresizingMaskIntoConstraints = false
+        pc.numberOfPages = 3
+        return pc
+    }()
+    
+    var skipButton: UIButton = {
+        let skBtn = UIButton(type: UIButtonType.system)
+        skBtn.setTitle("Skip", for: UIControlState.normal)
+        skBtn.setTitleColor(UIColor.orange, for: .normal)
+        skBtn.translatesAutoresizingMaskIntoConstraints = false
+        return skBtn
+    }()
+    
+    var nextButton: UIButton = {
+       let nextBtn = UIButton(type: UIButtonType.system)
+        nextBtn.setTitleColor(UIColor.orange, for: .normal)
+        nextBtn.setTitle("Next", for: .normal)
+        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        return nextBtn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
         view.addSubview(collectionView)
+        view.addSubview(pageControl)
+        view.addSubview(skipButton)
+        view.addSubview(nextButton)
+        
+        nextButton.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        nextButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        skipButton.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        skipButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+        skipButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        skipButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        pageControl.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        pageControl.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        pageControl.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -54,8 +99,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
        
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         let page = pages[indexPath.row]
-        myCell.imageView.image = UIImage(named: page.imageName)
-        myCell.textView.text = page.message
+        myCell.page = page
         return myCell
     }
     
@@ -63,5 +107,6 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         
         return CGSize(width: view.frame.width, height: view.frame.height)
     }
+
 }
 
