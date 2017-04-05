@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     let cellId:String = "cellID"
+    let loginId = "loginID"
+    
     let pages: [Page] = {
        let page1 = Page(title: "This is page 1", message: "Page 1 is introduction page", imageName: "page1")
         let page2 = Page(title: "This is page 2", message: "Page 2 is introduction page", imageName: "page2")
@@ -32,12 +34,12 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         return cv
     }()
     
-    var pageControl: UIPageControl = {
+    lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPageIndicatorTintColor = UIColor.orange
         pc.pageIndicatorTintColor = UIColor.gray
         pc.translatesAutoresizingMaskIntoConstraints = false
-        pc.numberOfPages = 3
+        pc.numberOfPages = 4
         return pc
     }()
     
@@ -88,15 +90,21 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginId)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return pages.count
+        return pages.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
+        if indexPath.row == pages.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: loginId, for: indexPath)
+            return cell
+        }
+        
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! PageCell
         let page = pages[indexPath.row]
         myCell.page = page
@@ -106,6 +114,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let page = targetContentOffset.pointee.x / view.frame.width
+        pageControl.currentPage = Int(page)
     }
 
 }
