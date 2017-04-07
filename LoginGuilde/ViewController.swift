@@ -47,16 +47,40 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         skBtn.setTitle("Skip", for: UIControlState.normal)
         skBtn.setTitleColor(UIColor.orange, for: .normal)
         skBtn.translatesAutoresizingMaskIntoConstraints = false
+        skBtn.addTarget(self, action: #selector(handleSkip), for: .touchUpInside)
         return skBtn
     }()
+    
+    func handleSkip() {
+        pageControl.currentPage =  pages.count - 1
+        handleNext()
+    }
     
     var nextButton: UIButton = {
        let nextBtn = UIButton(type: UIButtonType.system)
         nextBtn.setTitleColor(UIColor.orange, for: .normal)
         nextBtn.setTitle("Next", for: .normal)
         nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        nextBtn.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return nextBtn
     }()
+    
+    func handleNext() {
+        if pageControl.currentPage ==  pages.count {
+            return
+        }
+        
+        if pageControl.currentPage ==  pages.count - 1 {
+            skipButton.isHidden = true
+            nextButton.isHidden = true
+            pageControl.isHidden = true
+        }
+        
+        let currentPage = pageControl.currentPage
+        let indexPath = IndexPath(item: currentPage + 1, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        pageControl.currentPage += 1
+    }
     
     var pageControlBottomAnchor: NSLayoutConstraint?
     override func viewDidLoad() {
@@ -135,5 +159,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         }, completion: nil)
     }
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
+    
 }
 
