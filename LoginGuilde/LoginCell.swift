@@ -39,15 +39,24 @@ class LoginCell: UICollectionViewCell {
         return tfPassword
     }()
    
-    var loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let bt = UIButton(type: .system)
         bt.setTitle("Login", for: .normal)
         bt.setTitleColor(.white, for: .normal)
         bt.translatesAutoresizingMaskIntoConstraints = false
         bt.backgroundColor = UIColor.orange
         bt.layer.cornerRadius = 4
+        bt.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return bt
     }()
+    
+//    var loginController: ViewController?
+    var finishLoginController: FinishViewControllerDelegate?
+    
+    func handleLogin() {
+//        loginController?.finishController()
+        finishLoginController?.finishViewController()
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("required init coder not implement")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDataSource,UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, FinishViewControllerDelegate {
 
     let cellId:String = "cellID"
     let loginId = "loginID"
@@ -126,6 +126,8 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
        
         if indexPath.row == pages.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: loginId, for: indexPath) as! LoginCell
+//            cell.loginController = self
+            cell.finishLoginController = self
             return cell
         }
         
@@ -163,5 +165,12 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         view.endEditing(true)
     }
     
+    func finishViewController() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+//    func finishController() {
+//        dismiss(animated: true, completion: nil)
+//    }
 }
 
