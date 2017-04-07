@@ -27,7 +27,6 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.minimumLineSpacing = 0
         let cv = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-        cv.backgroundColor = UIColor.red
         cv.dataSource = self
         cv.delegate = self
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +58,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         return nextBtn
     }()
     
+    var pageControlBottomAnchor: NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,7 +90,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
         collectionView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         collectionView.register(PageCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: loginId)
+        collectionView.register(LoginCell.self, forCellWithReuseIdentifier: loginId)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -101,7 +101,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         if indexPath.row == pages.count {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: loginId, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: loginId, for: indexPath) as! LoginCell
             return cell
         }
         
@@ -117,8 +117,22 @@ class ViewController: UIViewController, UICollectionViewDataSource,UICollectionV
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let page = targetContentOffset.pointee.x / view.frame.width
-        pageControl.currentPage = Int(page)
+        let page = Int(targetContentOffset.pointee.x / view.frame.width)
+        pageControl.currentPage = page
+        if page == pages.count {
+            pageControl.isHidden = true
+            skipButton.isHidden = true
+            nextButton.isHidden = true
+//            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 80).isActive = true
+        } else {
+            pageControl.isHidden = false
+            skipButton.isHidden = false
+            nextButton.isHidden = false
+//            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        }
+        UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 
 }
